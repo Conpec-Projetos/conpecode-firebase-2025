@@ -4,7 +4,7 @@ import { Book, ObjectToBook } from "@/util/entities"
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
 
-export default function Read() {
+export default function Filter() {
   const [livros, setLivros] = useState<Array<Book>>([]);
   const [filtro, setFiltro] = useState<string>("");
 

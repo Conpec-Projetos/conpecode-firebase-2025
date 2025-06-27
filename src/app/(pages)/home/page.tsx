@@ -63,6 +63,14 @@ export default function Home() {
           activityTemplateLink="/gabaritos/filter-col"
           activityDescription="Leia todos os documentos de uma coleção que passem pelo filtro"
         />
+        <Card
+          activityName="Login e Logout"
+          dificulty="EASY"
+          setCounter={setActivitiesDone}
+          activityLink="/praticas/login"
+          activityTemplateLink="/gabaritos/login"
+          activityDescription="Faça um sistema de login e logout"
+        />
       </div>
 
       <button

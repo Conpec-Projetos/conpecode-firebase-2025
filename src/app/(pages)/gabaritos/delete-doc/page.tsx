@@ -3,7 +3,7 @@ import { useState } from "react";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
 
-export default function Write() {
+export default function Delete() {
   
   const [id, setId] = useState<string>("");
   
