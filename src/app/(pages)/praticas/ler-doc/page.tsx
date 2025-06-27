@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Book, ObjectToBook } from "@/util/entities"
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
+import InfoButton from "@/components/info-button";
 
 export default function Read() {
   const [livro, setLivro] = useState<Book>({
@@ -32,15 +33,7 @@ export default function Read() {
   return (
   
     <main className="h-screen w-screen flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-conpec-orange-faded to-conpec-orange-strong select-none">
-      <button
-        className="absolute top-6 right-8 cursor-pointer"
-        title="Documentação"
-        onClick={() => {
-          window.open("https://firebase.google.com/docs/firestore/query-data/get-data?hl=pt-BR&authuser=1#web_2", "_blank");
-        }}
-      >
-        <img src="/information-button.png" alt="Imagem" className="w-[40px] h-[40px]"/> 
-      </button>
+      <InfoButton link="https://firebase.google.com/docs/firestore/query-data/get-data?hl=pt-BR&authuser=1#web_2" label="Consulte a documentação" />
       {error ? <div>Documento não existe</div> : bookCard(livro)}
     </main>
     

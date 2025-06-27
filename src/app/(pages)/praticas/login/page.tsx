@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { auth } from "@/firebase/firebase-config";
 import { signInWithEmailAndPassword, signOut, User } from "firebase/auth";
+import InfoButton from "@/components/info-button";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
@@ -28,15 +29,7 @@ export default function Login() {
   return (
   
     <main className="h-screen w-screen flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-conpec-orange-faded to-conpec-orange-strong select-none">
-      <button
-        className="absolute top-6 right-8 cursor-pointer"
-        title="Documentação"
-        onClick={() => {
-          window.open("https://firebase.google.com/docs/auth/web/password-auth?hl=pt-BR&authuser=1", "_blank");
-        }}
-      >
-        <img src="/information-button.png" alt="Imagem" className="w-[40px] h-[40px]"/> 
-      </button>
+      <InfoButton link="https://firebase.google.com/docs/auth/web/password-auth?hl=pt-BR&authuser=1" label="Consulte a documentação" />
       {!user ? loginCard() : logoutCard()}
 
       <button
