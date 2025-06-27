@@ -1,37 +1,36 @@
 "use client";
 import { useState } from "react";
 import { auth } from "@/firebase/firebase-config";
-import { signInWithEmailAndPassword, signOut, User } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function Login() {
+export default function Signup() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const [user, setUser] = useState<User | null>(null);
-
-  const loginAuth = async () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up 
-        setUser(userCredential.user);
-        setEmail("");
-        setPassword("");
-
-      })
-      .catch((error) => {
-        alert("Credenciais inválidas");
-      });
+  const createAccount = async () => {
+    if(email.trim() !== "" && password.trim() !== ""){
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alert("Usuário criado: " + userCredential.user.uid);
+          setEmail("");
+          setPassword("");
+          // ...
+        })
+        .catch((error) => {
+          if (error.code === 'auth/invalid-email') {
+            alert('formatação de email inválida');
+          } else if (error.code === 'auth/weak-password'){
+            alert('senha precisa ter no mínimo 6 caracteres');
+          } else {
+            console.log(error);
+          }
+          
+        });
+    } else {
+      alert("Credenciais incompletas");
+    }
   }
 
-  const logoutAuth = async () => {
-    signOut(auth)
-    .then(() => {
-      setUser(null);
-    })
-    .catch((error) => {
-      alert("Logout failed:" + error);
-    });
-  }
 
 
   return (
@@ -46,24 +45,27 @@ export default function Login() {
       >
         <img src="/information-button.png" alt="Imagem" className="w-[40px] h-[40px]"/> 
       </button>
-      {!user ? loginCard() : logoutCard()}
+      {signupCard()}
 
       <button
         className="cursor-pointer bg-blue-500 text-white px-4 py-2 mt-2.5 rounded hover:shadow-xl transition-all duration-300"
         onClick={() => {
-          user ? logoutAuth() : loginAuth();
+          createAccount();
         }}
       >
-        {user ? "Logout" : "Login"}
+        Cadastrar
       </button>
 
     </main>
     
   );
 
-  function loginCard(){
+  function signupCard(){
     return (
       <div className="h-1/3 w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
+        <div className="text-2xl font-bold mb-2.5">
+          Crie uma conta
+        </div>
         <div className="w-[100%]">
           <div className="font-bold text-[16px]">E-mail:   
             <span className="font-normal">
@@ -88,28 +90,6 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </span>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-start justify-end h-[100%]">
-          <div>Usuário disponível</div>
-          <div>email: guilherme.silva@conpec.com.br</div>
-          <div>senha: teste123</div>
-        </div>
-        
-      </div>
-    );
-
-  }
-
-  function logoutCard(){
-    return (
-      <div className="h-1/3 w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
-        <div className="w-[100%]">
-          <div className="font-bold text-[16px]">User id logado:   
-            <span className="font-normal ml-1.5">
-              {user?.uid}
             </span>
           </div>
         </div>

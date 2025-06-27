@@ -57,15 +57,23 @@ export default function Home() {
         />
         <Card
           activityName="Filtrar coleção"
-          dificulty="MEDIUM"
+          dificulty="HARD"
           setCounter={setActivitiesDone}
           activityLink="/praticas/filter-col"
           activityTemplateLink="/gabaritos/filter-col"
           activityDescription="Leia todos os documentos de uma coleção que passem pelo filtro"
         />
         <Card
-          activityName="Login e Logout"
+          activityName="Cadastro"
           dificulty="EASY"
+          setCounter={setActivitiesDone}
+          activityLink="/praticas/signup"
+          activityTemplateLink="/gabaritos/signup"
+          activityDescription="Faça um cadastro de um novo usuário. Verifique se funcionou no gabarito da tarefa de login e logout"
+        />
+        <Card
+          activityName="Login e Logout"
+          dificulty="MEDIUM"
           setCounter={setActivitiesDone}
           activityLink="/praticas/login"
           activityTemplateLink="/gabaritos/login"

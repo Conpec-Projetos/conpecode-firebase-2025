@@ -14,11 +14,9 @@ export default function ReadCol() {
       const colRef = collection(db, collectionName);
       const querySnapshot = await getDocs(colRef);
 
-      querySnapshot.forEach((doc) => {
-        setLivros(prev => (
-          [...prev, ObjectToBook(doc.data())]
-        ));
-      });
+      const books = querySnapshot.docs.map(doc => ObjectToBook(doc.data()));
+      setLivros(books);
+
     };
 
     fetchBooks();

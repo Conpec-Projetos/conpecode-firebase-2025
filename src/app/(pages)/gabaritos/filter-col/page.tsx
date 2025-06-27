@@ -21,11 +21,8 @@ export default function Filter() {
       const queryFilter = query(colRef, where("genres", "array-contains", randomFilter));
       const querySnapshot = await getDocs(queryFilter);
 
-      querySnapshot.forEach((doc) => {
-        setLivros(prev => (
-          [...prev, ObjectToBook(doc.data())]
-        ));
-      });
+      const books = querySnapshot.docs.map(doc => ObjectToBook(doc.data()));
+      setLivros(books);
     };
 
     fetchBooks();

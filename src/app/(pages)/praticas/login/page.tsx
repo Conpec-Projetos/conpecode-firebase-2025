@@ -37,7 +37,7 @@ export default function Login() {
       >
         <img src="/information-button.png" alt="Imagem" className="w-[40px] h-[40px]"/> 
       </button>
-      {!user && loginCard()}
+      {!user ? loginCard() : logoutCard()}
 
       <button
         className="cursor-pointer bg-blue-500 text-white px-4 py-2 mt-2.5 rounded hover:shadow-xl transition-all duration-300"
@@ -87,6 +87,22 @@ export default function Login() {
           <div>Usuário disponível</div>
           <div>email: guilherme.silva@conpec.com.br</div>
           <div>senha: teste123</div>
+        </div>
+        
+      </div>
+    );
+
+  }
+
+  function logoutCard(){
+    return (
+      <div className="h-1/3 w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
+        <div className="w-[100%]">
+          <div className="font-bold text-[16px]">User id logado:   
+            <span className="font-normal ml-1.5">
+              {user?.uid}
+            </span>
+          </div>
         </div>
         
       </div>
