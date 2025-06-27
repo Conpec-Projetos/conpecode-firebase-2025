@@ -55,10 +55,18 @@ export default function Home() {
           activityTemplateLink="/gabaritos/ler-col"
           activityDescription="Leia todos os documentos em uma coleção"
         />
+        <Card
+          activityName="Filtrar coleção"
+          dificulty="MEDIUM"
+          setCounter={setActivitiesDone}
+          activityLink="/praticas/filter-col"
+          activityTemplateLink="/gabaritos/filter-col"
+          activityDescription="Leia todos os documentos de uma coleção que passem pelo filtro"
+        />
       </div>
 
       <button
-        className="absolute bottom-8 left-15 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:shadow-xl transition-all duration-300"
+        className="fixed bottom-8 left-15 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:shadow-xl transition-all duration-300"
         onClick={() => {
           window.open("https://console.firebase.google.com/u/1/project/conpecode-firebase/overview", "_blank");
         }}

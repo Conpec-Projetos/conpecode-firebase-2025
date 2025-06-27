@@ -35,17 +35,17 @@ export default function Read() {
       </button>
 
       <div className="flex flex-col items-center justify-start gap-2 w-screen my-3">
-      {livros.map((livro) => {
-        return bookCard(livro);
+      {livros.map((livro, idx) => {
+        return bookCard(livro, idx);
       })}
       </div>
     </main>
     
   );
 
-  function bookCard(livro: Book){
+  function bookCard(livro: Book, index:number){
     return livro ? (
-      <div className="h-[220px] w-1/3 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[5%] py-[1%] gap-2 ">
+      <div className="h-[220px] w-1/3 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[5%] py-[1%] gap-2 " key={index}>
         <div>
           <div className="font-bold text-[16px]">nome: <span className="font-normal">{livro.name}</span></div>
         </div>

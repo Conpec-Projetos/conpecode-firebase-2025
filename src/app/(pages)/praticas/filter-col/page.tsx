@@ -11,24 +11,20 @@ export default function Read() {
   const collectionName = "read";
   const filters = ["Fantasia", "Ficção", "Suspense", "Terror", "Drama", "Distopia", "Mistério", "Aventura"];
 
+  /*
+  -------------------------------------------------------------------------
+    Leia todos os documento em collectionName que forma validados pelo filtro
+    Observe que o filtro somente occore quando a tela é carregada, então
+    é melhor apenas pegar os documentos filtrados do que coletar todos os
+    documentos em uma lista local e depois filtrá-los
+    Olhe as importações que não estão sendo usadas ainda
+  -------------------------------------------------------------------------
+  */
+
   useEffect(() => {
     const randomFilter = (filters[Math.floor(Math.random() * filters.length)]); //filtro aleatório
     setFiltro(randomFilter);
 
-    const fetchBooks = async () => {
-      const colRef = collection(db, collectionName);
-
-      const queryFilter = query(colRef, where("genres", "array-contains", randomFilter));
-      const querySnapshot = await getDocs(queryFilter);
-
-      querySnapshot.forEach((doc) => {
-        setLivros(prev => (
-          [...prev, ObjectToBook(doc.data())]
-        ));
-      });
-    };
-
-    fetchBooks();
   },[]);
 
 
