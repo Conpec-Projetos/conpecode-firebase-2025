@@ -1,4 +1,4 @@
-import { Checkbox } from "../ui/checkbox";
+import { Checkbox } from "./checkbox";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

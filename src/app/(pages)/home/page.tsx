@@ -1,5 +1,5 @@
 "use client";
-import Card from "@/components/gabaritos/card";
+import Card from "@/components/ui/card";
 import { useState } from "react";
 
 export default function Home() {
