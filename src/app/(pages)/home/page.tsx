@@ -16,54 +16,55 @@ export default function Home() {
 
       <div className="flex flex-col items-center gap-2 w-1/2">
         <Card
-          activityName="Contador Limite"
+          activityName="Ler documento"
           dificulty="EASY"
           setCounter={setActivitiesDone}
-          activityLink="/praticas/contador-limite"
-          activityTemplateLink="/gabaritos/contador-limite"
-          activityDescription="Mostre na tela quando o contador passar de 10"
+          activityLink="/praticas/ler-doc"
+          activityTemplateLink="/gabaritos/ler-doc"
+          activityDescription="Leia um documento do firestore"
         />
         <Card
-          activityName="Usuários"
+          activityName="Escrever documento"
           dificulty="EASY"
           setCounter={setActivitiesDone}
-          activityLink="/praticas/users"
-          activityTemplateLink="/gabaritos/users"
-          activityDescription="Liste todos os usuários e adicione um botão para mostrar apenas os ativos"
+          activityLink="/praticas/escrever-doc"
+          activityTemplateLink="/gabaritos/escrever-doc"
+          activityDescription="Escreva um documento do firestore"
         />
         <Card
-          activityName="API"
+          activityName="Atualizar documento"
+          dificulty="EASY"
+          setCounter={setActivitiesDone}
+          activityLink="/praticas/update-doc"
+          activityTemplateLink="/gabaritos/update-doc"
+          activityDescription="Leia um documento do firestore e mude seus valores"
+        />
+        <Card
+          activityName="Deletar documento"
+          dificulty="EASY"
+          setCounter={setActivitiesDone}
+          activityLink="/praticas/delete-doc"
+          activityTemplateLink="/gabaritos/delete-doc"
+          activityDescription="Remova um documento do firestore"
+        />
+        <Card
+          activityName="Ler coleção"
           dificulty="MEDIUM"
           setCounter={setActivitiesDone}
-          activityLink="/praticas/api"
-          activityTemplateLink="/gabaritos/api"
-          activityDescription="Puxe os dados de uma API com useEffect e customize a cor da página"
-        />
-        <Card
-          activityName="Home"
-          dificulty="MEDIUM"
-          setCounter={setActivitiesDone}
-          activityLink="/praticas/home"
-          activityTemplateLink="/gabaritos/home"
-          activityDescription="Usando componentes, mostre na tela quantas atividades você completou"
-        />
-        <Card
-          activityName="To-do List"
-          dificulty="HARD"
-          setCounter={setActivitiesDone}
-          activityLink="/praticas/todo-list"
-          activityTemplateLink="/gabaritos/todo-list"
-          activityDescription="Faça uma To-do list usando conceitos de useState"
-        />
-        <Card
-          activityName="Tempo Restante"
-          dificulty="HARD"
-          setCounter={setActivitiesDone}
-          activityLink="/praticas/tempo-restante"
-          activityTemplateLink="/gabaritos/tempo-restante"
-          activityDescription="Faça o temporizador maluco do Valadares usando conceitos de useEffect"
+          activityLink="/praticas/ler-col"
+          activityTemplateLink="/gabaritos/ler-col"
+          activityDescription="Leia todos os documentos em uma coleção"
         />
       </div>
+
+      <button
+        className="absolute bottom-8 left-15 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:shadow-xl transition-all duration-300"
+        onClick={() => {
+          window.open("https://console.firebase.google.com/u/1/project/conpecode-firebase/overview", "_blank");
+        }}
+      >
+        Acessar Firebase
+      </button>
     </main>
   );
 }
