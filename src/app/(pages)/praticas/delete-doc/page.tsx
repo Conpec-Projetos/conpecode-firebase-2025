@@ -12,8 +12,8 @@ export default function Delete() {
 
   /*
   -------------------------------------------------------------------------
-    Deletar o documento localizado no collection e id quando realizar a 
-    função deleteBook
+    Deletar o documento localizado no 'collectionName' e 'id' quando
+    realizar a função deleteBook
     Olhe as importações que não estão sendo usadas ainda
   -------------------------------------------------------------------------
   */

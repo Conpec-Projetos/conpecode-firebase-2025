@@ -5,7 +5,7 @@ import { addDoc, collection, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
 import InfoButton from "@/components/info-button";
 
-export default function Write() {
+export default function Upload() {
   const [livro, setLivro] = useState<Book>({
     name: "",
     pages: 0,
@@ -14,19 +14,21 @@ export default function Write() {
     id: ""
   } as Book);
   const [genero, setGenero] = useState<string>("");
+  
+    const collectionName = "write";
 
-  const collectionName = "write";
-
-  /*
-  -------------------------------------------------------------------------
-    Escreva os dados em 'livro' em um documento com todos os campos
-    preenchidos localizado no 'collectionName' quando realizar a função
-    uploadBook
-    Olhe as importações que não estão sendo usadas ainda
-  -------------------------------------------------------------------------
-  */
 
   const uploadBook = async () => {
+    if(livro.name.trim() !== "" && livro.pages != 0 && livro.genres.length != 0){
+      const docRef = await addDoc(collection(db, collectionName), livro);
+      setLivro(prev => ({...prev, id: docRef.id}));
+
+      setDoc(docRef, { ...livro, id: docRef.id });
+
+      alert("Documento enviado para " + collectionName + "/" + docRef.id);
+    } else {
+      alert("Algum campo está incompleto");
+    }
     
   };
 

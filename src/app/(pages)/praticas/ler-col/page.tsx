@@ -12,7 +12,8 @@ export default function ReadCol() {
 
   /*
   -------------------------------------------------------------------------
-    Leia todos os documentos na collectionName
+    Leia todos os documentos na 'collectionName' e coloque os dados em
+    'livros'
     Olhe as importações que não estão sendo usadas ainda
   -------------------------------------------------------------------------
   */

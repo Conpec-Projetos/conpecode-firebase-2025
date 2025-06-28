@@ -64,6 +64,14 @@ export default function Home() {
           activityDescription="Leia todos os documentos de uma coleção que passem pelo filtro"
         />
         <Card
+          activityName="Escrever coleção"
+          dificulty="HARD"
+          setCounter={setActivitiesDone}
+          activityLink="/praticas/escrever-col"
+          activityTemplateLink="/gabaritos/escrever-col"
+          activityDescription="Escreva uma lista de documentos em uma coleção"
+        />
+        <Card
           activityName="Cadastro"
           dificulty="EASY"
           setCounter={setActivitiesDone}
@@ -78,6 +86,14 @@ export default function Home() {
           activityLink="/praticas/login"
           activityTemplateLink="/gabaritos/login"
           activityDescription="Faça um sistema de login e logout"
+        />
+        <Card
+          activityName="Upload uma imagem"
+          dificulty="MEDIUM"
+          setCounter={setActivitiesDone}
+          activityLink="/praticas/upload-img"
+          activityTemplateLink="/gabaritos/upload-img"
+          activityDescription="Faça o upload de uma imagem e pegue o URL dela"
         />
       </div>
 

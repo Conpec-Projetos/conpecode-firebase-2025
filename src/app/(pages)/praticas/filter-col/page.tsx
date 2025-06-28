@@ -14,7 +14,8 @@ export default function Filter() {
 
   /*
   -------------------------------------------------------------------------
-    Leia todos os documento em collectionName que forma validados pelo filtro
+    Leia todos os documento em 'collectionName' que foram validados pelo filtro
+    e coloque-os em 'livros'
     Observe que o filtro somente occore quando a tela é carregada, então
     é melhor apenas pegar os documentos filtrados do que coletar todos os
     documentos em uma lista local e depois filtrá-los

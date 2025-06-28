@@ -15,12 +15,13 @@ export default function Read() {
   } as Book);
   const [error, setError] = useState<boolean>(false);
 
-  const collection = "read";
+  const collectionName = "read";
   const id = "2yITfNfwTkbL9nmFvI0D";
 
   /*
   -------------------------------------------------------------------------
-    Leia o documento localizado no collection e id quando carregar a tela
+    Leia o documento localizado no 'collectionName' e 'id' quando carregar
+    a tela e coloque os dados em 'livros'
     Olhe as importações que não estão sendo usadas ainda
   -------------------------------------------------------------------------
   */

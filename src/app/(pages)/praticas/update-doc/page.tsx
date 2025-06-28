@@ -22,8 +22,8 @@ export default function Update() {
 
   /*
   -------------------------------------------------------------------------
-    Leia o documento localizado no collection e id quando carregar a tela
-    Atualize o documento quando realizar a função updateBook
+    Leia o documento localizado no 'collectionName' e 'id' quando carregar a tela
+    Atualize o documento em 'livro' quando realizar a função updateBook
     Olhe as importações que não estão sendo usadas ainda
   -------------------------------------------------------------------------
   */
