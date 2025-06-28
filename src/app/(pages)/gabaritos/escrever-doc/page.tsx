@@ -15,7 +15,7 @@ export default function Write() {
   } as Book);
   const [genero, setGenero] = useState<string>("");
   
-    const collectionName = "write";  
+    const collectionName = "write";
 
 
   const uploadBook = async () => {

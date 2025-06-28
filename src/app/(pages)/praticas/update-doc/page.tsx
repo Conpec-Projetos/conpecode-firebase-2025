@@ -18,7 +18,7 @@ export default function Update() {
 
 
   const collectionName = "update";
-  const id = "0XAUdX3eKdyzGXbKGGyB";
+  const id = "av3sGLlXY1kNGTAU5TJO";
 
   /*
   -------------------------------------------------------------------------
