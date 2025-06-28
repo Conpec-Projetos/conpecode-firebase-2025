@@ -12,20 +12,19 @@ export default function Upload() {
 
   const folderPath = "images/";
 
+  /*
+  -------------------------------------------------------------------------
+    Envie o arquivo 'file' para o storage o envie a url da imagem para a
+    função 'sendURL
+    Olhe as importações que não estão sendo usadas ainda
+  -------------------------------------------------------------------------
+  */
+
   const uploadImage = async () => {
     if (!file) return;
     setLoading(true);
 
-    try {
-      const storageRef = ref(storage, folderPath + file.name);
-
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      sendURL(url);
-      
-    } catch (error) {
-      console.error("Upload failed:", error);
-    }
+    // Faça o código aqui !
 
     await getURL(setImageURL);
     setLoading(false);

@@ -98,7 +98,7 @@ export default function Home() {
       </div>
 
       <button
-        className="fixed bottom-8 left-15 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:shadow-xl transition-all duration-300"
+        className="fixed bottom-8 left-15 cursor-pointer bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded hover:shadow-xl transition-all duration-300"
         onClick={() => {
           window.open("https://console.firebase.google.com/u/1/project/conpecode-firebase-2025/overview?hl=pt", "_blank");
         }}

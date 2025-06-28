@@ -15,12 +15,12 @@ export default function Read() {
   } as Book);
   const [error, setError] = useState<boolean>(false);
 
-  const collection = "read";
+  const collectionName = "read";
   const id = "2yITfNfwTkbL9nmFvI0D";
 
   useEffect(() => {
     const fetchBook = async () => {
-      const docRef = doc(db, collection, id);
+      const docRef = doc(db, collectionName, id);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
