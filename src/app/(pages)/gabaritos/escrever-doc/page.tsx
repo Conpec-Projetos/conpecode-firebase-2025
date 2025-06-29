@@ -61,7 +61,7 @@ export default function Write() {
 
   function bookCard(livro: Book){
     return livro ? (
-      <div className="h-1/3 w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
+      <div className="h-fit w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
         <div>
           <div className="font-bold text-[16px]">nome:   
             <span className="font-normal">

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Conpecode 2",
-  description: "Prática de TypeScript e React com Next.js",
+  title: "Conpecode 3",
+  description: "Prática de Firebase com Next.js",
 };
 
 export default function RootLayout({

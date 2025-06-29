@@ -4,6 +4,7 @@ import { storage } from "@/firebase/firebase-config";
 import InfoButton from "@/components/info-button";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { getURL, sendURL } from "@/util/imageURL";
+import Image from "next/image";
 
 export default function Upload() {
   const [imageURL, setImageURL] = useState<string | undefined>("");
@@ -64,7 +65,7 @@ export default function Upload() {
 
   function bookCard(){
     return (
-      <div className="h-1/2 w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
+      <div className="h-fit w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
         <div>
           <div className="font-bold text-[16px]">escolha um arquivo:   
             <span className="font-normal">
@@ -85,11 +86,12 @@ export default function Upload() {
               <span className="text-blue-500 font-semibold">Carregando...</span>
             </div>
           : imageURL && (
-            <div className="mt-2 max-h-100 overflow-hidden flex items-center">
-              <img
+            <div className="mt-2 h-52 w-52 relative">
+              <Image
                 src={imageURL}
                 alt="Preview"
-                className="max-w-full max-h-100 object-contain block mx-auto"
+                fill
+                className="object-cover rounded-md"
               />
             </div>
           )

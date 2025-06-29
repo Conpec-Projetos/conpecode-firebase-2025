@@ -15,7 +15,6 @@ export default function Signup() {
           alert("Usuário criado: " + userCredential.user.uid);
           setEmail("");
           setPassword("");
-          // ...
         })
         .catch((error) => {
           if (error.code === 'auth/invalid-email') {

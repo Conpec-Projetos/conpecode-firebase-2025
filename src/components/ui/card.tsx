@@ -4,21 +4,23 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 interface CardProps {
-  setCounter: React.Dispatch<React.SetStateAction<number>>;
   activityName: string;
   activityDescription: string;
   activityLink: string;
   activityTemplateLink: string;
   dificulty: string;
+  isCompleted?: boolean;
+  onToggleComplete?: (activityName: string, isCompleted: boolean) => void;
 }
 
 export default function Card({
-  setCounter,
   activityName,
   activityDescription,
   activityLink,
   activityTemplateLink,
   dificulty,
+  isCompleted = false,
+  onToggleComplete,
 }: CardProps) {
   const router = useRouter();
   return (
@@ -49,18 +51,19 @@ export default function Card({
         </Link>
         <div className="flex items-center gap-2">
           <Checkbox
-            id="checkbox"
+            id={`checkbox-${activityName}`}
+            checked={isCompleted}
             onCheckedChange={(checked) => {
-              if (checked) {
-                setCounter((prevCount: number) => prevCount + 1);
-              } else {
-                setCounter((prevCount) => prevCount - 1);
-              }
+              const isChecked = checked === true;
+                if (onToggleComplete) {
+                  onToggleComplete(activityName, isChecked);
+                }
+
             }}
             className="border-conpec-orange-strong bg-conpec-blue text-conpec-blue"
           />
           <label
-            htmlFor="checkbox"
+            htmlFor={`checkbox-${activityName}`}
             className="text-md font-normal text-conpec-black"
           >
             Marcar atividade como concluída

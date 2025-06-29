@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Book, ObjectToBook } from "@/util/entities"
+import { Book, ObjectToBook } from "@/util/entities";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
 import InfoButton from "@/components/info-button";
@@ -11,11 +11,10 @@ export default function Update() {
     pages: 0,
     isBestSeller: false,
     genres: [],
-    id: ""
+    id: "",
   } as Book);
   const [genero, setGenero] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
-
 
   const collectionName = "update";
   const id = "av3sGLlXY1kNGTAU5TJO";
@@ -33,10 +32,14 @@ export default function Update() {
     };
 
     fetchBook();
-  },[]);
+  }, []);
 
   const updateBook = async () => {
-    if(livro.name.trim() !== "" && livro.pages != 0 && livro.genres.length != 0){
+    if (
+      livro.name.trim() !== "" &&
+      livro.pages != 0 &&
+      livro.genres.length != 0
+    ) {
       const docRef = doc(db, collectionName, id);
       await updateDoc(docRef, { ...livro });
     } else {
@@ -44,59 +47,70 @@ export default function Update() {
     }
   };
 
-
   return (
-  
     <main className="h-screen w-screen flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-conpec-orange-faded to-conpec-orange-strong select-none">
-      <InfoButton link="https://firebase.google.com/docs/firestore/manage-data/add-data?hl=pt-BR&authuser=1" label="Consulte a documentação" />
+      <InfoButton
+        link="https://firebase.google.com/docs/firestore/manage-data/add-data?hl=pt-BR&authuser=1"
+        label="Consulte a documentação"
+      />
       {error ? <div>Documento não existe</div> : bookCard(livro)}
 
       {!error && (
         <button
           className="cursor-pointer bg-blue-500 text-white px-4 py-2 mt-2.5 rounded hover:shadow-xl transition-all duration-300"
           onClick={() => {
-        updateBook();
+            updateBook();
           }}
         >
           Atualizar Livro
         </button>
       )}
-
     </main>
-    
   );
 
-  function bookCard(livro: Book){
+  function bookCard(livro: Book) {
     return livro ? (
-      <div className="h-1/3 w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
+      <div className="h-fit w-1/2 flex flex-col items-start justify-start bg-conpec-white border rounded-3xl px-[7%] py-[3%] gap-2 ">
         <div>
-          <div className="font-bold text-[16px]">nome:   
+          <div className="font-bold text-[16px]">
+            nome:
             <span className="font-normal">
-              <input className="border border-gray-300 rounded-md px-3 py-0.5 ml-1"
+              <input
+                className="border border-gray-300 rounded-md px-3 py-0.5 ml-1"
                 placeholder="nome do livro"
                 type="text"
                 value={livro.name}
-                onChange={(e) => setLivro(prev => ({ ...prev, name: e.target.value }))}
+                onChange={(e) =>
+                  setLivro((prev) => ({ ...prev, name: e.target.value }))
+                }
               />
             </span>
           </div>
         </div>
 
         <div>
-          <div className="font-bold text-[16px]">páginas:   
+          <div className="font-bold text-[16px]">
+            páginas:
             <span className="font-normal">
-              <input className="border border-gray-300 rounded-md px-3 py-0.5 ml-1 w-[80px]"
+              <input
+                className="border border-gray-300 rounded-md px-3 py-0.5 ml-1 w-[80px]"
                 min={0}
                 type="number"
                 value={livro.pages}
-                onChange={(e) => setLivro(prev => ({ ...prev, pages: Number(e.target.value) }))}
+                onChange={(e) =>
+                  setLivro((prev) => ({
+                    ...prev,
+                    pages: Number(e.target.value),
+                  }))
+                }
               />
             </span>
           </div>
         </div>
 
         <div>
-          <div className="font-bold text-[16px]">BestSeller:   
+          <div className="font-bold text-[16px]">
+            BestSeller:
             <span className="font-normal">
               <select
                 name="BestSeller"
@@ -118,9 +132,11 @@ export default function Update() {
 
         <div>
           <div>
-            <div className="font-bold text-[16px]">gêneros:
+            <div className="font-bold text-[16px]">
+              gêneros:
               <span className="font-normal">
-                <input className="border border-gray-300 rounded-md px-3 py-0.5 mx-1 w-[80px]"
+                <input
+                  className="border border-gray-300 rounded-md px-3 py-0.5 mx-1 w-[80px]"
                   placeholder="gênero do livro"
                   min={0}
                   type="text"
@@ -130,39 +146,56 @@ export default function Update() {
               </span>
               <button
                 className="bg-orange-100 cursor-pointer px-1 ml-1.5 w-10 hover:bg-amber-300"
-                onClick={()=>{
-                  setLivro(prev => (
-                    {...prev, 
-                      genres: (genero.trim() !== "" && !prev.genres.includes(genero)) ? [...prev.genres, genero] : prev.genres
-                    }
-                  ));
+                onClick={() => {
+                  setLivro((prev) => ({
+                    ...prev,
+                    genres:
+                      genero.trim() !== "" && !prev.genres.includes(genero)
+                        ? [...prev.genres, genero]
+                        : prev.genres,
+                  }));
                   setGenero("");
-                  }}>
-                  add
+                }}
+              >
+                add
               </button>
             </div>
           </div>
 
-            <div className="mt-1.5 flex flex-wrap gap-1.5 max-h-24 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-orange-100">
-              {livro.genres.length > 0 &&
+          <div className="mt-1.5 flex flex-wrap gap-1.5 max-h-24 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-orange-100">
+            {livro.genres.length > 0 &&
               livro.genres.map((generoAtual, idx) => (
                 <div className="flex items-center" key={idx}>
-                  <span className="bg-orange-200 rounded-lg p-1 hover:bg-orange-300 flex items-center" key={idx}>
+                  <span
+                    className="bg-orange-200 rounded-lg p-1 hover:bg-orange-300 flex items-center"
+                    key={idx}
+                  >
                     {generoAtual}
-                    <button className="cursor-pointer ml-1.5"
-                      onClick={()=>{setLivro(prev=>({...prev, genres:prev.genres.filter(gen => gen !== generoAtual)}))}}>
-                        <img src="/delete.png" alt="x" className="w-[15px] h-[15px]" />
+                    <button
+                      className="cursor-pointer ml-1.5"
+                      onClick={() => {
+                        setLivro((prev) => ({
+                          ...prev,
+                          genres: prev.genres.filter(
+                            (gen) => gen !== generoAtual
+                          ),
+                        }));
+                      }}
+                    >
+                      <img
+                        src="/delete.png"
+                        alt="x"
+                        className="w-[15px] h-[15px]"
+                      />
                     </button>
                   </span>
                 </div>
               ))}
-            </div>
+          </div>
         </div>
-        
       </div>
     ) : (
       <div>Carregando...</div>
     );
-
   }
 }

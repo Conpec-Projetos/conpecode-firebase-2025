@@ -18,12 +18,16 @@ export default function InfoButton({link, label}: InfoButtonProps) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className={`
+            <div
+                onClick={() => {
+                    window.open(link, '_blank');
+                }}
+                className={`
                 absolute top-0 right-15 z-10 
                 bg-conpec-white rounded-lg p-3 shadow-lg
                 transition-all duration-300 ease-in-out
                 ${isHovered 
-                    ? 'opacity-100 translate-x-0' 
+                    ? 'opacity-100 translate-x-0 cursor-pointer' 
                     : 'opacity-0 translate-x-5 pointer-events-none'
                 }
             `}>
